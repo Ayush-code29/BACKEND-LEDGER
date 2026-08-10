@@ -1,2 +1,5 @@
-import express from express
-export const app = express()
+import express from 'express';
+
+const app = express();
+
+export default app;
