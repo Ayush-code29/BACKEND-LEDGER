@@ -1,6 +1,10 @@
-import express from 'express'
-import authmiddleware from '../middleware/auth.middleware.js';
-import accountController from '../controller/account.controller.js';
-const accountrouter = express.Router();
-accountrouter.post('/',authmiddleware.authmiddleware,accountController.createaccount)
-export default accountrouter
+import express from "express";
+import authMiddleware from "../middleware/auth.middleware.js";
+import accountController from "../controller/account.controller.js";
+const accountRouter = express.Router();
+accountRouter.post(
+    "/",
+    authMiddleware,
+    accountController.createaccount
+);
+export default accountRouter;

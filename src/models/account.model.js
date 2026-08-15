@@ -1,23 +1,32 @@
 import mongoose from "mongoose";
-const accountschema = new mongoose.Schema({
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"user",
-        required:true,
-        index:true,
+
+const accountSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      index: true,
     },
-    status:{
-        enum:{
-            values:["ACTIVE","FROZEN","CLOSED"],
-            message:"Status can be either ACTIVE, FROZEN OR CLOSED",
-            default:"ACTIVE"
-        }
+
+    status: {
+      type: String,
+      enum: {
+        values: ["ACTIVE", "FROZEN", "CLOSED"],
+        message: "Status can be either ACTIVE, FROZEN or CLOSED",
+      },
+      default: "ACTIVE",
     },
-    currency:{
-        type:String,
-        required:true,
-        default:"INR"
-    }
-},{timestamps:true})
-const accountmodel = mongoose.model("account",accountschema)
-export default accountmodel
+
+    currency: {
+      type: String,
+      required: true,
+      default: "INR",
+    },
+  },
+  { timestamps: true }
+);
+
+const Account = mongoose.model("Account", accountSchema);
+
+export default Account;
